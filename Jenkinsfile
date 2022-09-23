@@ -34,10 +34,8 @@ pipeline {
             steps {
                 dir(path: env.BUILD_ID) { 
                     sh "docker run --rm ${IMAGE}" 
+                    sh 'pyinstaller --onefile sources/add2vals.py'
                 }
-            }
-            steps {
-                sh 'pyinstaller --onefile sources/add2vals.py'
             }
             post {
                 success {

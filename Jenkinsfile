@@ -27,12 +27,10 @@ pipeline {
             }
         }
         stage('Deploy') { 
-            agent any
-            environment { 
+            agent any {
                 IMAGE = 'cdrx/pyinstaller-linux:python2'
             }
             steps {
-                    sh "docker run --rm ${IMAGE}" 
                     sh 'pyinstaller --onefile sources/add2vals.py'
             }
             post {
